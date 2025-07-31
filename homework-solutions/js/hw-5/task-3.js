@@ -5,6 +5,11 @@
  */
 const word = 'hello';
 
+let vowels = word.match(/[aeiou]/gi) || 0;
+let consonants = word.match(/[^aeiou\s]/gi) || 0;
+
 let vowelsAndConsonantsResult = '';
+
+vowelsAndConsonantsResult = `${word} contains ${vowels.length} vowels and ${consonants.length} consonants`;
 
 export { vowelsAndConsonantsResult };
