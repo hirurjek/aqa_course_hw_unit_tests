@@ -13,7 +13,21 @@
   const myPizzasT2 = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
 */
 
-let resultUnique;
-let resultNull;
+const competitorPizzas = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
+const myPizzasT1 = ['Peperoni', 'Margherita', 'Diablo', 'Vegetarian'];
+const myPizzasT2 = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
+
+
+const myPizzas = [...myPizzasT1, ...myPizzasT2];
+
+const resultUnique = myPizzas.filter(
+  pizza => !competitorPizzas.some(c => c.toLowerCase() === pizza.toLowerCase())
+);
+const resultNull = competitorPizzas.every(
+  pizza => myPizzas.some(m => m.toLowerCase() === pizza.toLowerCase())
+) ? null : resultUnique;  
+
+console.log(resultUnique);
+console.log(resultNull); 
 
 export { resultNull, resultUnique };
