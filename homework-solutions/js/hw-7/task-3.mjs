@@ -9,7 +9,8 @@
 */
 
 function digitalRoot(number) {
-  // Ваш код
-}
-
+  if (number < 10) return number; 
+  let digits = String(number).split('').map(Number);
+  let sum = digits.reduce((acc, digit) => acc + digit, 0);
+    return sum > 9 ? digitalRoot(sum) : sum;}
 export { digitalRoot };
