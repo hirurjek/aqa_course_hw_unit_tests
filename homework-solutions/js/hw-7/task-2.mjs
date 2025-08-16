@@ -4,7 +4,11 @@
 */
 
 function isPalindrom(word) {
-  // Ваш код
+  if (typeof word !== 'string') return false;
+  if (word === '') return true; // пустая строка считается палиндромом
+  
+  word = word.toLowerCase();
+  return word === word.split('').reverse().join('');
 }
 
 /*
@@ -15,7 +19,13 @@ function isPalindrom(word) {
 */
 
 function findLongestWords(sentence) {
-  // Ваш код
+  if (typeof sentence !== 'string' || !sentence.trim()) return [];
+
+  let words = sentence.trim().split(/\s+/);
+  let maxLen = Math.max(...words.map(w => w.length));
+
+  return words
+    .filter(w => w.length === maxLen);
 }
 
 export { isPalindrom, findLongestWords };
