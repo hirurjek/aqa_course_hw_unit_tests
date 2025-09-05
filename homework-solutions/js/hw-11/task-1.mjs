@@ -82,7 +82,7 @@ class Company {
     }
     this.#employees.push(employee)
   }
-
+пше 
   getEmployees() {
     return this.#employees;
 
