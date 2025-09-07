@@ -28,36 +28,35 @@ function addCharacter(character) {
 
 
 function getCharacter(name) {
-  const character = characters.find(char => char.name === name);
-  if (!character) {
-    return undefined;
-  }
-  return character;
+  return characters.find(char => char.name === name);
 }
 
 function getCharactersByAge(minAge) {
-  for (const char of characters)  {
-    if (typeof minAge !== 'number') {
-      throw new Error('Invalid age input');
-    }
+  if (typeof minAge !== 'number') {
+    throw new Error('Invalid age input');
   }
-  return characters.filter(char => char.age >= minAge); 
+
+  return characters.filter(char => char.age >= minAge);
 }
 
 function updateCharacter(name, newCharacter) {
-  const index = characters.findIndex(char => char.name === name);
-  if (index === -1) {
+  const character = getCharacter(name);
+  if (!character) {
     throw new Error('Character not found');
   }
-  
+
   if (
     newCharacter &&
     typeof newCharacter.name === 'string' &&
     typeof newCharacter.age === 'number'
   ) {
-    characters[index] = newCharacter;
-  } 
+    character.name = newCharacter.name;
+    character.age = newCharacter.age;
+  }
+
+  return character; 
 }
+
 
 function removeCharacter(name) {
   const index = characters.findIndex(char => char.name === name);
