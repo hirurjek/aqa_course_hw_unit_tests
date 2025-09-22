@@ -36,10 +36,13 @@ function promiseNumber(num) {
   });
 }
 
-Promise.all([promiseNumber(1), promiseNumber(2), promiseNumber(3)])
-    promiseNumber(1).then(console.log);
-    promiseNumber(2).then(console.log);
-    promiseNumber(3).then(console.log);
+Promise.all([promiseNumber(1), promiseNumber(2), promiseNumber(3)]).then(
+  (results) => {
+    results.forEach((result) => {
+      console.log(result);
+    });
+  }
+);
 
 
 Promise.allSettled([promiseNumber(1), promiseNumber(2), promiseNumber(3)])
